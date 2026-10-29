@@ -14,6 +14,22 @@ export function TextAreaField({pHolder,
                     ></textarea>)
 }
 
+export function IntTextField({pHolder,
+                        stateFunction,
+                        stateVar,
+                        refVar}){
+    return(<>
+            <input className="form-control form-control-sm"
+                        value={stateVar}
+                        ref={refVar}
+                        onChange={function (event) {
+                        stateFunction(parseInt(event.target.value));
+                        }}
+                        placeholder={pHolder}
+                        
+                    />
+    </>)
+}
 export function TextField({pHolder,
                         stateFunction,
                         stateVar,
@@ -59,5 +75,12 @@ export function ButtonField({isDisable,text,color})
 {
     return(
         <button disabled={isDisable}  className={`btn btn-${color}`}>{text}</button>
+    )
+}
+
+export function ButtonFieldReducer({isDisable,text,color,eventFunction})
+{
+    return(
+        <button disabled={isDisable} onClick={()=>eventFunction} className={`btn btn-${color}`}>{text}</button>
     )
 }

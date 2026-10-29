@@ -12,6 +12,9 @@ import {Calculator} from "./pages/Calculator.jsx"
 import { Home } from "./pages/Home.jsx";
 import { useState } from "react";
 import { createContext } from "react";
+import { CalculatorReducer } from "./pages/reducer/CalculatorReducer.jsx";
+import {Provider} from "react-redux"
+import { authStore } from "./pages/redux/AuthStore.jsx";
 
 export const TitleContext=createContext()
 export function App()
@@ -19,6 +22,7 @@ export function App()
   const [title,setTitle]=useState("Home")
   return(<>
   <TitleContext.Provider value={{setTitle,title}}>
+    <Provider store={authStore}>
     <BrowserRouter>
   <title>{title}</title>
     <Navbar/>
@@ -42,8 +46,11 @@ export function App()
           <Route path="/user-forms" element={<UserAuthForms />}/>
 
           <Route path="/calculator" element={<Calculator/>}/>
+
+          <Route path="/reducerCal" element={<CalculatorReducer/>} />
       </Routes>
     </BrowserRouter>
+    </Provider>
   </TitleContext.Provider>
   </>)
 }

@@ -4,6 +4,8 @@ import { ListAccordian } from "../components/ListAccordian"
 import { useEffect } from "react"
 import { useContext } from "react"
 import { TitleContext } from "../App"
+import { createContext } from "react"
+
 export function IncidentsList()
 {
     const {setTitle,title}=useContext(TitleContext)
@@ -18,6 +20,10 @@ export function IncidentsList()
 
     <h1 className="text-center">List</h1>
     <hr/>
-    <ListAccordian mockIncidents={mockIncidents}/>
+
+    <IncidentListContext.Provider value={mockIncidents}>
+       <ListAccordian/>
+    </IncidentListContext.Provider>
+    
     </div>)
 }

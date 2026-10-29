@@ -1,6 +1,8 @@
-export function ListAccordian(props) {
+import { useContext } from "react"
+//import {IncidentsListContext } from "../pages/IncidentsList"
+export function ListAccordian() {
 
-    const {mockIncidents}=props
+    const mockIncidents=useContext(IncidentsListContext)
    
     return (
         <div className="accordion w-50 mx-auto" id="accordionExample">
